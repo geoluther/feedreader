@@ -27,20 +27,47 @@ $(function() {
         });
 
 
+
         /* TODO: Write a test that loops through each feed
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
+         function testUrl(feedUrl) {
+
+             it('has a defined url', function() {
+                expect(feedUrl).toBeDefined();
+                expect(feedUrl.length).not.toBe(0);
+             });
+         }
+
+         for (var i=0; i < allFeeds.length ; i++){
+            testUrl(allFeeds[i].url);
+         }
 
 
         /* TODO: Write a test that loops through each feed
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
+
+
+         function testName(feedName) {
+
+             it('has a defined name', function() {
+                expect(feedName).toBeDefined();
+                expect(feedName.length).not.toBe(0);
+             });
+         }
+
+         for (var i=0; i < allFeeds.length ; i++){
+            testName(allFeeds[i].name);
+         }
     });
 
 
     /* TODO: Write a new test suite named "The menu" */
+
+    describe('The menu', function() {
 
         /* TODO: Write a test that ensures the menu element is
          * hidden by default. You'll have to analyze the HTML and
@@ -48,11 +75,24 @@ $(function() {
          * hiding/showing of the menu element.
          */
 
+         // this isn't right
+         it('is hidden by default', function() {
+            var theMenu = $('body').attr('class');
+            expect(theMenu).toBe('menu-hidden');
+         });
+
          /* TODO: Write a test that ensures the menu changes
           * visibility when the menu icon is clicked. This test
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
+         it('changes visibility when clicked', function() {
+            var theMenu = $('body').attr('class');
+            expect(theMenu).toBe('menu-hidden');
+         });
+
+
+      });
 
     /* TODO: Write a new test suite named "Initial Entries" */
 
