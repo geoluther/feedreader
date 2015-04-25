@@ -50,7 +50,6 @@ $(function() {
          * and that the name is not empty.
          */
 
-
          function testName(feedName) {
 
              it('has a defined name', function() {
@@ -86,6 +85,9 @@ $(function() {
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
+
+         // stub
+
          it('changes visibility when clicked', function() {
             var theMenu = $('body').attr('class');
             expect(theMenu).toBe('menu-hidden');
