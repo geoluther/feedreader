@@ -91,7 +91,16 @@ $(function() {
         // jQuery( "body" ).trigger( e );
         
          it('changes visibility when clicked', function() {
-            var theMenu = $('body').attr('class');
+            var e = jQuery.Event( "click" );
+            var theMenu;
+            var menuIcon = $('.menu-icon-link');
+
+            $(menuIcon).trigger(e);
+            theMenu = $('body').attr('class');
+            expect(theMenu).not.toBe('menu-hidden');
+
+            $(menuIcon).trigger(e);
+            theMenu = $('body').attr('class');
             expect(theMenu).toBe('menu-hidden');
          });
 
