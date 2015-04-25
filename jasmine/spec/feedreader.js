@@ -117,12 +117,22 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test wil require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
-        it('have a single .entry element loaded', function() {
-            var foo = true;
-            expect(foo).toBe(true);
+
+         beforeEach(function(done) {
+                loadFeed(0, done);
+         });
+
+
+        it('has a single .entry element loaded', function(done) {
+            var entries = $('.entry');
+            console.log("entries: " + entries.length );
+            // change to entries, not feeds
+            expect(entries.length).toBeGreaterThan(0);
+            done();
          });
 
      });
+
 
     /* TODO: Write a new test suite named "New Feed Selection" */
     describe('New Feed Selection', function() {
