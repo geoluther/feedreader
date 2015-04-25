@@ -32,6 +32,8 @@ $(function() {
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
+
+         // function to test all feds, not just one
          function testUrl(feedUrl) {
 
              it('has a defined url', function() {
@@ -86,10 +88,9 @@ $(function() {
           * clicked and does it hide when clicked again.
           */
 
-        // stub
         // var e = jQuery.Event( "click" );
         // jQuery( "body" ).trigger( e );
-        
+
          it('changes visibility when clicked', function() {
             var e = jQuery.Event( "click" );
             var theMenu;
