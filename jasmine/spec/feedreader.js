@@ -86,8 +86,10 @@ $(function() {
           * clicked and does it hide when clicked again.
           */
 
-         // stub
-
+        // stub
+        // var e = jQuery.Event( "click" );
+        // jQuery( "body" ).trigger( e );
+        
          it('changes visibility when clicked', function() {
             var theMenu = $('body').attr('class');
             expect(theMenu).toBe('menu-hidden');
