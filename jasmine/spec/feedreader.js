@@ -140,15 +140,22 @@ $(function() {
          * Remember, loadFeed() is asynchronous.
          */
 
+         var feedInitUrl;
+         var feed2Url;
+
         beforeEach(function(done) {
-            loadFeed(0, done);
+            feedInitUrl = $('.entry-link').attr('href');
+            loadFeed(1, done);
         });
 
-        it('has new content', function() {
-            var foo = true;
-            expect(foo).toBe(true);
+        it('has new content', function(done) {
+            feed2Url = $('.entry-link').attr('href');
+            console.log("feed2Url: " + feed2Url);
+            console.log("feedInit: " + feedInitUrl);
+            expect(feedInitUrl).not.toBe(feed2Url);
+            init();
+            done();
         });
-
      });
 
 }());
