@@ -122,11 +122,9 @@ $(function() {
                 loadFeed(0, done);
          });
 
-
         it('has a single .entry element loaded', function(done) {
             var entries = $('.entry');
-            console.log("entries: " + entries.length );
-            // change to entries, not feeds
+            console.log(entries.length);
             expect(entries.length).toBeGreaterThan(0);
             done();
          });
@@ -141,10 +139,16 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+
+        beforeEach(function(done) {
+            loadFeed(0, done);
+        });
+
         it('has new content', function() {
             var foo = true;
             expect(foo).toBe(true);
-         });
+        });
+
      });
 
 }());
