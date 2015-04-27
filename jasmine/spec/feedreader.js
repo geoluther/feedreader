@@ -26,43 +26,31 @@ $(function() {
             expect(allFeeds.length).not.toBe(0);
         });
 
-
-
         /* TODO: Write a test that loops through each feed
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
 
          // function to test all feds, not just one
-         function testUrl(feedUrl) {
 
-             it('has a defined url', function() {
-                expect(feedUrl).toBeDefined();
-                expect(feedUrl.length).not.toBe(0);
-             });
-         }
-
-         for (var i=0; i < allFeeds.length ; i++){
-            testUrl(allFeeds[i].url);
-         }
-
+        it('have defined urls that are not empty', function() {
+            allFeeds.forEach(function(feed) {
+                expect(feed.url).toBeDefined();
+                expect(feed.url.length).not.toBe(0);
+            });
+        });
 
         /* TODO: Write a test that loops through each feed
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
 
-         function testName(feedName) {
-
-             it('has a defined name', function() {
-                expect(feedName).toBeDefined();
-                expect(feedName.length).not.toBe(0);
-             });
-         }
-
-         for (var i=0; i < allFeeds.length ; i++){
-            testName(allFeeds[i].name);
-         }
+        it('have defined names that are not empty', function() {
+            allFeeds.forEach(function(feed) {
+                expect(feed.name).toBeDefined();
+                expect(feed.name.length).not.toBe(0);
+            });
+        });
     });
 
 
@@ -76,7 +64,6 @@ $(function() {
          * hiding/showing of the menu element.
          */
 
-         // is this right?
          it('is hidden by default', function() {
             var theMenu = $('body').attr('class');
             expect(theMenu).toBe('menu-hidden');
@@ -90,6 +77,7 @@ $(function() {
 
         // var e = jQuery.Event( "click" );
         // jQuery( "body" ).trigger( e );
+        // create click event
 
          it('changes visibility when clicked', function() {
             var e = jQuery.Event( "click" );
@@ -124,7 +112,7 @@ $(function() {
 
         it('has a single .entry element loaded', function(done) {
             var entries = $('.entry');
-            console.log(entries.length);
+            // console.log(entries.length);
             expect(entries.length).toBeGreaterThan(0);
             done();
          });
@@ -140,19 +128,22 @@ $(function() {
          * Remember, loadFeed() is asynchronous.
          */
 
-         var feedInitUrl;
-         var feed2Url;
+         var oldFeedUrl;
+         var newFeedUrl;
 
         beforeEach(function(done) {
-            feedInitUrl = $('.entry-link').attr('href');
+            // get inital feed listing?
+            oldFeedUrl = $('.entry-link').attr('href');
+            // load next feed
             loadFeed(1, done);
         });
 
         it('has new content', function(done) {
-            feed2Url = $('.entry-link').attr('href');
-            console.log("feed2Url: " + feed2Url);
-            console.log("feedInit: " + feedInitUrl);
-            expect(feedInitUrl).not.toBe(feed2Url);
+            // get new url after next feed is loaded
+            newFeedUrl = $('.entry-link').attr('href');
+            // console.log("newFeedUrl: " + newFeedUrl);
+            // console.log("oldFeedUrl: " + oldFeedUrl);
+            expect(newFeedUrl).not.toBe(oldFeedUrl);
             init();
             done();
         });
