@@ -11,3 +11,6 @@ http://api.jquery.com/category/events/event-object/
 
 write test around menu-hidden class
 trigger event inside the test...
+
+
+compare loadFeed(0) and loadFeed(1);
